@@ -1,1 +1,4 @@
-source_files += files('main.cpp')
+source_files += files(
+  'main.cpp',
+  'person.cpp'
+)
