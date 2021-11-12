@@ -1,5 +1,7 @@
 #pragma once
 
+#include <sstream>
+
 class Date
 {
 public:
@@ -16,6 +18,17 @@ public:
 	constexpr int day() const { return m_day; }
 	constexpr int month() const { return m_month; }
 	constexpr int year() const { return m_year; }
+
+	inline const std::string toString() const
+	{
+		std::stringstream sstream;
+		sstream
+			<< "Date("
+			<< m_day << '/'
+			<< m_month << '/'
+			<< m_year << ')';
+		return sstream.str();
+	}
 
 private:
 	int m_day{1};
