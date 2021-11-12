@@ -13,6 +13,12 @@ public:
 	Person(const Person&) = default;
 	virtual ~Person() = default;
 
+	inline friend std::ostream& operator<<(std::ostream& ostream, const Person& self)
+	{
+		ostream << self.toString();
+		return ostream;
+	}
+
 	inline std::string_view name() const { return m_name; }
 	inline int cc() const { return m_cc; }
 	inline const Date& birthDate() const { return m_birthDate; }
