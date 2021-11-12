@@ -15,6 +15,8 @@ public:
 		double scholarship
 	);
 
+	friend std::istream& operator>>(std::istream&, Fellow&);
+
 	inline double scholarship() const { return m_scholarship; }
 
 private:
