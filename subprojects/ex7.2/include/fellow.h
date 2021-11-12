@@ -16,6 +16,11 @@ public:
 	);
 
 	friend std::istream& operator>>(std::istream&, Fellow&);
+	inline friend std::ostream& operator<<(std::ostream& ostream, const Fellow& self)
+	{
+		ostream << self.toString();
+		return ostream;
+	}
 
 	inline double scholarship() const { return m_scholarship; }
 
