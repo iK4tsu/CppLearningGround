@@ -19,6 +19,19 @@ public:
 	inline size_t id() const { return m_id; }
 	inline const Date& enrolmentDate() const { return m_enrolmentDate; }
 
+	inline const std::string toString() const override
+	{
+		std::stringstream sstream;
+		sstream
+			<< "Student("
+			<< m_name << ", "
+			<< m_cc << ", "
+			<< m_birthDate << ", "
+			<< m_id << ", "
+			<< m_enrolmentDate << ')';
+		return sstream.str();
+	}
+
 private:
 	static size_t m_global;
 	size_t m_id{m_global++};
