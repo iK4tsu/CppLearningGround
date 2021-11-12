@@ -1,5 +1,7 @@
 #pragma once
 
+#include <istream>
+#include <ostream>
 #include <ctime>
 #include "person.h"
 
@@ -11,6 +13,8 @@ public:
 	Student(std::string name, int cc, Date birthDate, Date enrolmentDate);
 	Student(const Student&) = default;
 	~Student() = default;
+
+	friend std::istream& operator>>(std::istream&, Student&);
 
 	inline size_t id() const { return m_id; }
 	inline const Date& enrolmentDate() const { return m_enrolmentDate; }
