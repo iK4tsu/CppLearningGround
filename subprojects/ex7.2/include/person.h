@@ -2,6 +2,7 @@
 
 #include <string>
 #include <string_view>
+#include <sstream>
 #include "date.h"
 
 class Person
@@ -15,6 +16,17 @@ public:
 	inline std::string_view name() const { return m_name; }
 	inline int cc() const { return m_cc; }
 	inline const Date& birthDate() const { return m_birthDate; }
+
+	virtual inline const std::string toString() const
+	{
+		std::stringstream sstream;
+		sstream
+			<< "Person("
+			<< m_name << ", "
+			<< m_cc << ", "
+			<< m_birthDate << ')';
+		return sstream.str();
+	}
 
 protected:
 	std::string m_name{};
