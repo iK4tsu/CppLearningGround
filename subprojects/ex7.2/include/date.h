@@ -1,5 +1,6 @@
 #pragma once
 
+#include <ostream>
 #include <sstream>
 
 class Date
@@ -14,6 +15,12 @@ public:
 
 	~Date() = default;
 	constexpr Date(const Date& other) = default;
+
+	friend inline std::ostream& operator<<(std::ostream& ostream, const Date& self)
+	{
+		ostream << self.toString();
+		return ostream;
+	}
 
 	constexpr int day() const { return m_day; }
 	constexpr int month() const { return m_month; }
