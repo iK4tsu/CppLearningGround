@@ -15,6 +15,11 @@ public:
 	~Student() = default;
 
 	friend std::istream& operator>>(std::istream&, Student&);
+	inline friend std::ostream& operator<<(std::ostream& ostream, const Student& self)
+	{
+		ostream << self.toString();
+		return ostream;
+	}
 
 	inline size_t id() const { return m_id; }
 	inline const Date& enrolmentDate() const { return m_enrolmentDate; }
