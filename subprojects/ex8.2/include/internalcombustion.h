@@ -16,6 +16,11 @@ public:
 
 	friend std::istream& operator>>(std::istream&, InternalCombustion&);
 
+	inline std::string toString() const override
+	{
+		return "InternalCombustion(" + toSStringParams().str() + ')';
+	}
+
 protected:
 	InternalCombustion(double cylinderVol);
 
