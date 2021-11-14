@@ -17,13 +17,6 @@ std::istream& operator>>(std::istream& istream, Hybrid& self)
 
 std::ostream& operator<<(std::ostream& ostream, const Hybrid& self)
 {
-	ostream
-		<< "Hybrid("
-		<< self.m_year << ", "
-		<< Vehicle::strFromColor(self.m_color) << ", "
-		<< self.m_wheels << ", "
-		<< self.m_batteryLife << ", "
-		<< self.m_cylinderVol
-		<< ')';
+	ostream << self.toString();
 	return ostream;
 }
