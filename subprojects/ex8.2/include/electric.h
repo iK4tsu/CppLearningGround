@@ -1,6 +1,7 @@
 #pragma once
 
 #include <istream>
+#include <ostream>
 #include <sstream>
 #include "vehicle.h"
 
@@ -12,6 +13,7 @@ public:
 	inline double batteryLife() const { return m_batteryLife; }
 
 	friend std::istream& operator>>(std::istream&, Electric&);
+	friend std::ostream& operator<<(std::ostream&, const Electric&);
 
 	inline std::string toString() const override
 	{
