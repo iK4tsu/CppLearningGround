@@ -8,6 +8,8 @@ class Vehicle
 public:
 	enum class Color { red, yellow, green, unknown };
 
+	inline bool operator<(const Vehicle& other) const { return m_year < other.m_year; }
+
 	constexpr static std::string_view strFromColor(const Color& color)
 	{
 		switch(color)
