@@ -1,6 +1,7 @@
 #pragma once
 
 #include <istream>
+#include <ostream>
 #include <sstream>
 #include <string_view>
 
@@ -10,6 +11,8 @@ public:
 	enum class Color { red, yellow, green, unknown };
 
 	inline bool operator<(const Vehicle& other) const { return m_year < other.m_year; }
+
+	friend std::ostream& operator<<(std::ostream&, const Vehicle&);
 
 	constexpr static std::string_view strFromColor(const Color& color)
 	{
