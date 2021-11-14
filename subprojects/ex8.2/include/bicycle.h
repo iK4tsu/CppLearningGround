@@ -2,6 +2,7 @@
 
 #include <istream>
 #include <ostream>
+#include <sstream>
 #include "vehicle.h"
 
 class Bicycle : public Vehicle
@@ -38,5 +39,12 @@ public:
 	}
 
 private:
+	inline std::stringstream toSStringParams() const override
+	{
+		std::stringstream sstream{Vehicle::toSStringParams()};
+		sstream << R"(, ")" << strFromType(m_type) << '"';
+		return sstream;
+	}
+
 	Type m_type{Type::exercise};
 };
