@@ -1,6 +1,7 @@
 #pragma once
 
 #include <istream>
+#include <ostream>
 #include "electric.h"
 #include "internalcombustion.h"
 
@@ -17,6 +18,7 @@ public:
 	);
 
 	friend std::istream& operator>>(std::istream&, Hybrid&);
+	friend std::ostream& operator<<(std::ostream&, const Hybrid&);
 
 	inline double emissionCO2() const override { return m_cylinderVol * 0.05; }
 };
