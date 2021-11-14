@@ -38,6 +38,11 @@ public:
 		else                         return unknown;
 	}
 
+	inline std::string toString() const override
+	{
+		return "Bicycle(" + toSStringParams().str() + ')';
+	}
+
 private:
 	inline std::stringstream toSStringParams() const override
 	{
