@@ -9,21 +9,13 @@ Bicycle::Bicycle(unsigned short year, Color color, Type type)
 
 std::istream& operator>>(std::istream& istream, Bicycle& self)
 {
+	std::string line;
+
 	istream >> static_cast<Vehicle&>(self);
+	istream >> line;
 
 	self.m_wheels = 2;
-
-	std::string line;
-	for (int i = 0; i < static_cast<int>(Bicycle::Type::racing); i++)
-		std::cout
-			<< '['
-			<< i
-			<< "] "
-			<< self.strFromType(static_cast<Bicycle::Type>(i))
-			<< '\n';
-	std::cout << "> ";
-	std::getline(istream, line);
-	self.m_type = static_cast<Bicycle::Type>(std::stoi(line));
+	self.m_type = Bicycle::typeFromStr(line);
 
 	return istream;
 }
