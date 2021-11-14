@@ -28,6 +28,15 @@ public:
 		}
 	}
 
+	constexpr static Type typeFromStr(std::string_view type)
+	{
+		using enum Type;
+		if      (type == "exercise") return exercise;
+		else if (type == "mountain") return mountain;
+		else if (type == "racing")   return racing;
+		else                         return unknown;
+	}
+
 private:
 	Type m_type{Type::exercise};
 };
