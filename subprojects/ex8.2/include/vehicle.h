@@ -1,6 +1,7 @@
 #pragma once
 
 #include <istream>
+#include <sstream>
 #include <string_view>
 
 class Vehicle
@@ -41,6 +42,17 @@ protected:
 	virtual ~Vehicle() = default;
 
 	friend std::istream& operator>>(std::istream&, Vehicle&);
+
+	virtual inline std::stringstream toSStringParams() const
+	{
+		std::stringstream sstream;
+		sstream
+			<< m_serialNumber << ", "
+			<< m_year << ", "
+			<< '"' << strFromColor(m_color) << R"(", )"
+			<< m_wheels;
+		return sstream;
+	}
 
 	unsigned short m_year{2'000};
 	Color m_color{Color::unknown};
