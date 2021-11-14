@@ -23,6 +23,15 @@ public:
 		}
 	}
 
+	constexpr static Color colorFromStr(const std::string_view color)
+	{
+		using enum Color;
+		if      (color == "red")    return red;
+		else if (color == "yellow") return yellow;
+		else if (color == "green")  return green;
+		else                        return unknown;
+	}
+
 private:
 	static size_t m_globalSerial;
 
