@@ -2,6 +2,7 @@
 
 #include <istream>
 #include <ostream>
+#include <sstream>
 #include "electric.h"
 #include "internalcombustion.h"
 
@@ -21,4 +22,14 @@ public:
 	friend std::ostream& operator<<(std::ostream&, const Hybrid&);
 
 	inline double emissionCO2() const override { return m_cylinderVol * 0.05; }
+
+private:
+	inline std::stringstream toSStringParams() const override
+	{
+		std::stringstream sstream{Vehicle::toSStringParams()};
+		sstream
+			<< ", " << m_batteryLife
+			<< ", " << m_cylinderVol;
+		return sstream;
+	}
 };
