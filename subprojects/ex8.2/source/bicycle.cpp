@@ -22,12 +22,6 @@ std::istream& operator>>(std::istream& istream, Bicycle& self)
 
 std::ostream& operator<<(std::ostream& ostream, const Bicycle& self)
 {
-	ostream
-		<< "Bicycle("
-		<< self.m_year << ", "
-		<< Vehicle::strFromColor(self.m_color) << ", "
-		<< self.m_wheels << ", "
-		<< Bicycle::strFromType(self.m_type)
-		<< ')';
+	ostream << self.toString();
 	return ostream;
 }
