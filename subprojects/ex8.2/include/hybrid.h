@@ -23,6 +23,11 @@ public:
 
 	inline double emissionCO2() const override { return m_cylinderVol * 0.05; }
 
+	inline std::string toString() const override
+	{
+		return "Hybrid(" + toSStringParams().str() + ')';
+	}
+
 private:
 	inline std::stringstream toSStringParams() const override
 	{
