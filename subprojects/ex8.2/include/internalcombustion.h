@@ -1,6 +1,7 @@
 #pragma once
 
 #include <istream>
+#include <ostream>
 #include <sstream>
 #include "vehicle.h"
 
@@ -15,6 +16,7 @@ public:
 	}
 
 	friend std::istream& operator>>(std::istream&, InternalCombustion&);
+	friend std::ostream& operator<<(std::ostream&, const InternalCombustion&);
 
 	inline std::string toString() const override
 	{
