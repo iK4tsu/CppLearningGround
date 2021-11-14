@@ -3,5 +3,6 @@ source_files += files(
   'electric.cpp',
   'hybrid.cpp',
   'internalcombustion.cpp',
+  'main.cpp',
   'vehicle.cpp',
 )
