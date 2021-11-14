@@ -1,5 +1,6 @@
 #pragma once
 
+#include <istream>
 #include "vehicle.h"
 
 class Bicycle : public Vehicle
@@ -9,6 +10,8 @@ public:
 
 	Bicycle() = default;
 	Bicycle(unsigned short year, Color color, Type type);
+
+	friend std::istream& operator>>(std::istream&, Bicycle&);
 
 	constexpr static std::string_view strFromType(const Type& type)
 	{
