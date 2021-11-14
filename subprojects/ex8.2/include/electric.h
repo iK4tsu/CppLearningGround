@@ -13,6 +13,11 @@ public:
 
 	friend std::istream& operator>>(std::istream&, Electric&);
 
+	inline std::string toString() const override
+	{
+		return "Electric(" + toSStringParams().str() + ')';
+	}
+
 protected:
 	Electric(double batteryLife);
 
