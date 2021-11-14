@@ -1,5 +1,6 @@
 #pragma once
 
+#include <istream>
 #include <string_view>
 
 class Vehicle
@@ -27,6 +28,8 @@ protected:
 	Vehicle(unsigned short year, Color color, unsigned short wheels);
 	Vehicle() = default;
 	virtual ~Vehicle() = default;
+
+	friend std::istream& operator>>(std::istream&, Vehicle&);
 
 	unsigned short m_year{2'000};
 	Color m_color{Color::unknown};
