@@ -1,6 +1,7 @@
 #pragma once
 
 #include <istream>
+#include <sstream>
 #include "vehicle.h"
 
 class InternalCombustion : public virtual Vehicle
@@ -17,6 +18,13 @@ public:
 
 protected:
 	InternalCombustion(double cylinderVol);
+
+	inline std::stringstream toSStringParams() const override
+	{
+		std::stringstream sstream{Vehicle::toSStringParams()};
+		sstream << ", " << m_cylinderVol;
+		return sstream;
+	}
 
 	double m_cylinderVol{};
 };
