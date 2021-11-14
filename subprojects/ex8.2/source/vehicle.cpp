@@ -10,6 +10,12 @@ Vehicle::Vehicle(unsigned short year, Color color, unsigned short wheels)
 	, m_wheels(wheels)
 {}
 
+std::ostream& operator<<(std::ostream& ostream, const Vehicle& self)
+{
+	ostream << self.toString();
+	return ostream;
+}
+
 std::istream& operator>>(std::istream& istream, Vehicle& self)
 {
 	std::string line;
