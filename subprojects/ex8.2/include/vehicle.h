@@ -33,6 +33,8 @@ public:
 		else                        return unknown;
 	}
 
+	virtual inline std::string toString() const = 0;
+
 private:
 	static size_t m_globalSerial;
 
