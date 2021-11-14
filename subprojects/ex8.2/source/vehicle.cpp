@@ -14,20 +14,10 @@ std::istream& operator>>(std::istream& istream, Vehicle& self)
 {
 	std::string line;
 
-	std::cout << "Year: ";
-	std::getline(istream, line);
-	self.m_year = unsigned(std::stoul(line));
+	istream >> self.m_year;
+	istream	>> line;
 
-	for (int i = 0; i < static_cast<int>(Vehicle::Color::unknown); i++)
-		std::cout
-			<< '['
-			<< i
-			<< "] "
-			<< self.strFromColor(static_cast<Vehicle::Color>(i))
-			<< '\n';
-	std::cout << "> ";
-	std::getline(istream, line);
-	self.m_color = static_cast<Vehicle::Color>(std::stoi(line));
+	self.m_color = Vehicle::colorFromStr(line);
 
 	return istream;
 }
