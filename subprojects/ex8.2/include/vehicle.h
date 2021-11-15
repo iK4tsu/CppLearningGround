@@ -10,6 +10,8 @@ class Vehicle
 public:
 	enum class Color { red, yellow, green, unknown };
 
+	virtual ~Vehicle() = default;
+
 	inline bool operator<(const Vehicle& other) const { return m_year < other.m_year; }
 
 	friend std::ostream& operator<<(std::ostream&, const Vehicle&);
@@ -44,7 +46,6 @@ private:
 protected:
 	Vehicle(unsigned short year, Color color, unsigned short wheels);
 	Vehicle() = default;
-	virtual ~Vehicle() = default;
 
 	friend std::istream& operator>>(std::istream&, Vehicle&);
 
