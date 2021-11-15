@@ -16,6 +16,8 @@ public:
 
 	friend std::ostream& operator<<(std::ostream&, const Vehicle&);
 
+	inline size_t serialNumber() const { return m_serialNumber; }
+
 	constexpr static std::string_view strFromColor(const Color& color)
 	{
 		switch(color)
