@@ -15,6 +15,9 @@ public:
 		, m_capital(std::forward<T2>(capital))
 	{}
 
+	void insert(const District&);
+	void insert(District&&);
+
 private:
 	std::string m_name{};
 	City m_capital{};
