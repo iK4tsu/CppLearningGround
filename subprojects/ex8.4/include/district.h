@@ -19,6 +19,8 @@ public:
 		static_assert(is_same_unqual<T3, City>, "Type T3 must be 'City'");
 	}
 
+	inline bool operator<(const District& rhs) const { return m_name < rhs.m_name; }
+
 	inline std::string_view name() const { return m_name; }
 	inline size_t population() const { return m_population; }
 	inline const City& capital() const { return m_capital; }
