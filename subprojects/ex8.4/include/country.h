@@ -15,6 +15,8 @@ public:
 		, m_capital(std::forward<T2>(capital))
 	{}
 
+	inline bool operator<(const Country& rhs) const { return m_name < rhs.m_name; }
+
 	void insert(const District&);
 	void insert(District&&);
 
