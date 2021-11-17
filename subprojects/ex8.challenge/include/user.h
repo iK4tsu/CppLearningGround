@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <istream>
+#include <ostream>
 #include <string>
 
 class User
@@ -17,6 +18,7 @@ public:
 	{}
 
 	friend std::istream& operator>>(std::istream&, User&);
+	friend std::ostream& operator<<(std::ostream&, const User&);
 
 	inline const std::string& name() const { return m_name; }
 	inline const std::string& email() const { return m_email; }
