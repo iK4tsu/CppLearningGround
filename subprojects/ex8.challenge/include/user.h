@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <istream>
 #include <string>
 
 class User
@@ -14,6 +15,8 @@ public:
 		, m_email(std::forward<T2>(email))
 		, m_mobile(std::forward<T3>(mobile))
 	{}
+
+	friend std::istream& operator>>(std::istream&, User&);
 
 	inline const std::string& name() const { return m_name; }
 	inline const std::string& email() const { return m_email; }
