@@ -1,5 +1,6 @@
 #pragma once
 
+#include <ostream>
 #include <set>
 #include "city.h"
 #include "district.h"
@@ -19,6 +20,8 @@ public:
 
 	void insert(const District&);
 	void insert(District&&);
+
+	friend std::ostream& operator<<(std::ostream&, const Country&);
 
 private:
 	std::string m_name{};
