@@ -20,6 +20,8 @@ public:
 	friend std::istream& operator>>(std::istream&, User&);
 	friend std::ostream& operator<<(std::ostream&, const User&);
 
+	inline bool operator<(const User& rhs) const { return m_email < rhs.m_email; }
+
 	inline const std::string& name() const { return m_name; }
 	inline const std::string& email() const { return m_email; }
 	inline const std::string& mobile() const { return m_mobile; }
