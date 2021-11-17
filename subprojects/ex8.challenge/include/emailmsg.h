@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include "msg.h"
 
 class EmailMsg : public Msg
@@ -13,6 +14,8 @@ public:
 		, m_srcAddr(std::forward<T2>(srcAddr))
 		, m_dstAddr(std::forward<T3>(dstAddr))
 	{}
+
+	friend std::istream& operator>>(std::istream&, EmailMsg&);
 
 	constexpr Type type() const override { return Type::email; }
 
