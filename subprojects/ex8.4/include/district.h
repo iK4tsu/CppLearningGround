@@ -15,7 +15,7 @@ public:
 		, m_population{population}
 		, m_capital{std::forward<T3>(capital)}
 	{
-		static_assert(is_same_unqual<T1, std::string>, "Type T1 must be 'std::string'");
+		static_assert(is_convertible_unqual<T1, std::string>, "Type T1 must be convertible to 'std::string'");
 		static_assert(is_same_unqual<T3, City>, "Type T3 must be 'City'");
 	}
 
