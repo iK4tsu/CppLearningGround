@@ -14,6 +14,7 @@ public:
 	void addUser(const User&);
 	void addUser(User&&);
 	void addMsg(Msg* msg);
+	void emailsFrom(std::string_view) const;
 
 private:
 	std::map<std::string, User> m_users{};
