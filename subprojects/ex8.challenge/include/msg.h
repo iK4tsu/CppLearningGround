@@ -26,7 +26,17 @@ public:
 	virtual ~Msg() = default;
 
 	using Type = enum MsgType;
+
+	/**
+	@brief Returns the message type.
+	@returns MsgType of the instance.
+	*/
 	virtual constexpr Type type() const = 0;
+
+	/**
+	@brief Returns the unique id of a message type.
+	@returns The unique id of a message type.
+	*/
 	virtual size_t id() const = 0;
 
 	inline const std::string& info() const { return m_info; }
