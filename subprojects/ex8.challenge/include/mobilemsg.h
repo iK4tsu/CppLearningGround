@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include "msg.h"
 
 class MobileMsg : public Msg
@@ -13,6 +14,8 @@ public:
 		, m_srcMobile(std::forward<T2>(srcMobile))
 		, m_dstMobile(std::forward<T3>(dstMobile))
 	{}
+
+	friend std::istream& operator>>(std::istream&, MobileMsg&);
 
 	constexpr Type type() const override { return Type::mobile; }
 
