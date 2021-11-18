@@ -9,6 +9,8 @@
 class MsgManager
 {
 public:
+	void addUser(const User&);
+	void addUser(User&&);
 
 private:
 	std::map<std::string, User> m_users{};
