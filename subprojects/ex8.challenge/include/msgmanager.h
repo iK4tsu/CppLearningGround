@@ -9,6 +9,8 @@
 class MsgManager
 {
 public:
+	friend std::ostream& operator<<(std::ostream&, const MsgManager&);
+
 	void addUser(const User&);
 	void addUser(User&&);
 	void addMsg(Msg* msg);
