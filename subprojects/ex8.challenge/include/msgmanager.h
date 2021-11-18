@@ -16,6 +16,7 @@ public:
 	void addMsg(Msg* msg);
 	void emailsFrom(std::string_view) const;
 	void saveTo(std::string_view) const;
+	void loadFrom(std::string_view);
 
 private:
 	std::map<std::string, User> m_users{};

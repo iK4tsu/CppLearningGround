@@ -4,6 +4,7 @@
 #include <fstream>
 #include <range/v3/view.hpp>
 #include <range/v3/action.hpp>
+#include <sstream>
 #include "emailmsg.h"
 #include "mobilemsg.h"
 
@@ -73,4 +74,36 @@ void MsgManager::saveTo(std::string_view filename) const
 
 	for (const auto& mobile : mobiles)
 		savefile << "mobile " << ' ' << mobile.srcMobile() << ' ' << mobile.dstMobile() << ' ' << mobile.info() << '\n';
+}
+
+void MsgManager::loadFrom(std::string_view filename)
+{
+	auto path = std::filesystem::path("subprojects")/"ex8.challenge"/filename;
+	std::ifstream loadfile(path);
+
+	for (std::string line; std::getline(loadfile, line);)
+	{
+		std::stringstream sstream(std::move(line));
+		sstream >> line;
+		if (line == "user")
+		{
+			User user;
+			sstream >> user;
+			addUser(std::move(user));
+		}
+		else
+		{
+			std::string info;
+			std::string src;
+			std::string dst;
+
+			sstream >> src >> dst;
+			std::getline(sstream, info);
+
+			if (line == "email")
+				m_messages.push_back(std::make_unique<EmailMsg>(std::move(info), std::move(src), std::move(dst)));
+			else
+				m_messages.push_back(std::make_unique<MobileMsg>(std::move(info), std::move(src), std::move(dst)));
+		}
+	}
 }
