@@ -1,8 +1,11 @@
 #include "msgmanager.h"
 
+#include <filesystem>
+#include <fstream>
 #include <range/v3/view.hpp>
 #include <range/v3/action.hpp>
 #include "emailmsg.h"
+#include "mobilemsg.h"
 
 std::ostream& operator<<(std::ostream& ostream, const MsgManager& self)
 {
@@ -45,4 +48,29 @@ void MsgManager::emailsFrom(std::string_view email) const
 
 	for (const auto email : emails)
 		std::cout << "\tto: " << m_users.at(std::string{email->dstAddr()}) << ": " << email->info() << std::endl;
+}
+
+void MsgManager::saveTo(std::string_view filename) const
+{
+	auto path = std::filesystem::path("subprojects")/"ex8.challenge"/filename;
+	std::ofstream savefile(path);
+
+	auto filterMap = []<MsgType type, class T>() {
+		using namespace ranges::views;
+		return filter([](const auto& msg) { return msg->type() == type; })
+		| transform([](const auto& msg) { return static_cast<T&>(*msg); });
+	};
+
+	auto users = m_users | ranges::views::transform([](const auto& pair) { return pair.second; });
+	auto emails = m_messages | filterMap.operator()<MsgType::email, EmailMsg>();
+	auto mobiles = m_messages | filterMap.operator()<MsgType::mobile, MobileMsg>();
+
+	for (const auto& user : users)
+		savefile << "user " << user.name() << ' ' << user.email() << ' ' << user.mobile() << '\n';
+
+	for (const auto& email : emails)
+		savefile << "email " << ' ' << email.srcAddr() << ' ' << email.dstAddr() << ' ' << email.info() << '\n';
+
+	for (const auto& mobile : mobiles)
+		savefile << "mobile " << ' ' << mobile.srcMobile() << ' ' << mobile.dstMobile() << ' ' << mobile.info() << '\n';
 }
