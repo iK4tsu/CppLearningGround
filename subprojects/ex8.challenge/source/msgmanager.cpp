@@ -81,7 +81,7 @@ void MsgManager::loadFrom(std::string_view filename)
 	auto path = std::filesystem::path("subprojects")/"ex8.challenge"/filename;
 	std::ifstream loadfile(path);
 
-	for (std::string line; std::getline(loadfile, line);)
+	for (std::string& line : ranges::getlines(loadfile))
 	{
 		std::stringstream sstream(std::move(line));
 		sstream >> line;
