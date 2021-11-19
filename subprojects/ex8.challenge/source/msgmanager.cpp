@@ -70,10 +70,10 @@ void MsgManager::saveTo(std::string_view filename) const
 		savefile << "user " << user.name() << ' ' << user.email() << ' ' << user.mobile() << '\n';
 
 	for (const auto& email : emails)
-		savefile << "email " << ' ' << email.srcAddr() << ' ' << email.dstAddr() << ' ' << email.info() << '\n';
+		savefile << "email " << email.srcAddr() << ' ' << email.dstAddr() << ' ' << email.info() << '\n';
 
 	for (const auto& mobile : mobiles)
-		savefile << "mobile " << ' ' << mobile.srcMobile() << ' ' << mobile.dstMobile() << ' ' << mobile.info() << '\n';
+		savefile << "mobile " << mobile.srcMobile() << ' ' << mobile.dstMobile() << ' ' << mobile.info() << '\n';
 }
 
 void MsgManager::loadFrom(std::string_view filename)
